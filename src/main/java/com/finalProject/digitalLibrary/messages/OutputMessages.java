@@ -1,0 +1,16 @@
+package com.finalProject.digitalLibrary.messages;
+
+public class OutputMessages {
+    public static final String SUCCESSFUL_CHANGED_USER_STATUS="SUCCESSFUL_CHANGED_USER_STATUS";
+    public static final String SAME_STATUS="STATUS_IS_THE_SAME";
+    public static final String BOOK_HAS_INACTIVE_STATUS="BOOK_HAS_INACTIVE_STATUS";
+    public static final String SUCCESSFUL_CHANGED_BOOK_STATUS="SUCCESSFUL_CHANGED_USER_STATUS";
+    public static final String USERNAME_CHANGE_SUCCESSFUL="USERNAME_CHANGE_SUCCESSFUL";
+    public static final String SUCCESSFUL_REMOVED_BOOK="SUCCESSFUL_REMOVED_BOOK";
+    public static final String SUCCESSFUL_CREATED_ACCOUNT="SUCCESSFUL_CREATED_ACCOUNT";
+    public static final String SUCCESSFUL_CREATED_RATE_FOR_BOOK="SUCCESSFUL_CREATED_RATE_FOR_BOOK";
+    public static final String PASSWORD_CHANGE_SUCCESSFUL="PASSWORD_CHANGE_SUCCESSFUL";
+    public static final String SUCCESSFUL_CREATED_FILE="SUCCESSFUL_CREATED_FILE";
+    public static final String SUCCESSFUL_DELETED_BOOK="SUCCESSFUL_DELETED_BOOK";
+    public static final String SUCCESFULL_INSERTED_BOOK_TO_LIBRARY="SUCCESFULL_INSERTED_BOOK_TO_LIBRARY";
+}

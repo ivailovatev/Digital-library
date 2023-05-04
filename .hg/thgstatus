@@ -1,0 +1,12 @@
+msrc/main/java/com/finalProject/DigitalLibrary/controlllers
+msrc/main/java/com/finalProject/DigitalLibrary/repository
+msrc/main/java/com/finalProject/DigitalLibrary/repositoryInterfaces
+msrc/main/java/com/finalProject/DigitalLibrary/security
+msrc/main/java/com/finalProject/DigitalLibrary/services
+msrc/test/java/com/finalProject/DigitalLibrary/services
+rtarget/classes/com/finalProject/DigitalLibrary/controlller
+rtarget/classes/com/finalProject/DigitalLibrary/controlller/security
+rtarget/classes/com/finalProject/DigitalLibrary/model
+rtarget/classes/com/finalProject/DigitalLibrary/model/dto
+mtarget/classes/com/finalProject/DigitalLibrary/repository
+rtarget/classes/com/finalProject/DigitalLibrary/service

@@ -1,0 +1,85 @@
+package com.finalProject.DigitalLibrary.controlller;
+
+import com.finalProject.DigitalLibrary.dto.LibraryRequest;
+import com.finalProject.DigitalLibrary.dto.RateRequest;
+import com.finalProject.DigitalLibrary.model.*;
+import com.finalProject.DigitalLibrary.service.ReaderService;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/books")
+@PreAuthorize("hasRole('READER')")
+public class ReaderController {
+
+    private final ReaderService readerService;
+
+
+    public ReaderController(ReaderService readerService) {
+        this.readerService = readerService;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{bookId}")
+    public BookView getBookById(@PathVariable("bookId") Integer bookId){
+        return readerService.getBookById(bookId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/author/{authorId}")
+    public List<BookView> viewCreativity(@PathVariable("authorId") int authorId){
+        return readerService.getBooksByAuthorId(authorId);
+
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/me/last")
+    public String getLastReadBook(){
+        return readerService.getLastReadBook();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/me/all/{readerId}")
+    public List<LibraryEntry> getAllBooksFromReader(@PathVariable("readerId") int readerId){
+        return readerService.getReaderBooksByReaderId(readerId);
+
+    }
+
+    // mapping to be /{bookId}/{rate} or rate as @RequestParam, userId must be taken from AuthenticationPrincipal
+// if there is no security then /{bookId}/rate/{userId} and rate as request param
+//TODO: when got security
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/rate")
+    public String createNewRate(@RequestBody RateRequest rateRequest)
+    {
+        return readerService.createBookRate(rateRequest.getUserId(), rateRequest.getBookId(), rateRequest.getRate());
+    }
+
+    // just Post with main mapping etc. @Post /books
+// if no security and no AuthenticationPrincipal then /books/new/{authorId}
+    //TODO: when got security
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/new")
+    public void insertBookToLibrary(@RequestBody LibraryRequest libraryRequest){
+        readerService.addBookToLibrary(libraryRequest.getUserId(), libraryRequest.getBookId());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/sort/library/{readerName}")
+    public List<LibraryView> getSortedLibrary(@PathVariable String readerName){
+        return readerService.getSortedLibraryByReaderName(readerName);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/genre/{genreName}")
+    public List<LibraryView> getBooksByGenreName(@PathVariable String genreName){
+        return readerService.getBooksByGenreName(genreName);
+    }
+
+
+
+
+}
